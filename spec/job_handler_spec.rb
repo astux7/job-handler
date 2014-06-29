@@ -11,21 +11,41 @@ describe JobHandler do
 
   it 'returns empty string for empty input' do
     job_handler.input = ""
-    expect(job_handler.make_sequence).to eq ""
+    expect(job_handler.get_job_sequence).to eq ""
   end
 
   it 'raise the error about unrecognized input' do
     job_handler.input = "8=> p"
-    expect(lambda { job_handler.make_sequence} ).to raise_error(RuntimeError)
+    expect(lambda { job_handler.get_job_sequence} ).to raise_error(RuntimeError)
     job_handler.input = "u => l\np =>8"
-    expect(lambda { job_handler.make_sequence} ).to raise_error(RuntimeError)
+    expect(lambda { job_handler.get_job_sequence} ).to raise_error(RuntimeError)
   end
 
   it 'should not raise the error if correct input' do
     job_handler.input = "k => g"
-    expect(job_handler.make_sequence.empty?).to be_false
-    job_handler.input = "k => g\np=>"
-    expect(job_handler.make_sequence.empty?).to be_false
+    expect(job_handler.get_job_sequence.empty?).to be_false
+    job_handler.input = "k => g\np => "
+    expect(job_handler.get_job_sequence.empty?).to be_false
+  end
+
+  it 'should raise the error if job depends on itself' do
+    job_handler.input = "c=>c"
+    expect(lambda { job_handler.get_job_sequence} ).to raise_error(RuntimeError)
+  end
+
+  it 'should scale input to jobs' do
+    job_handler.input = "a =>"
+    expect(job_handler.get_job_sequence.empty?).to be_false
+  end
+# check first and last letter if there is a loop!!!!
+  it 'should return a given a => ' do
+    job_handler.input = "a =>"
+    expect(job_handler.get_job_sequence).to eq ('a ')
+  end
+
+  it 'should return abc' do
+    job_handler.input = "a=>\nb=>\nc=>\n"
+    expect(job_handler.get_job_sequence).to eq 'a b c '
   end
 
 end
