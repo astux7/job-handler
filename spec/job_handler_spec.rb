@@ -47,5 +47,17 @@ describe JobHandler do
     job_handler.input = "a=>\nb=>\nc=>\n"
     expect(job_handler.get_job_sequence).to eq 'a b c '
   end
-
+  it 'should return ad fcbe ' do
+    job_handler.input = "a =>\nb => c\nc => f\nd => a\ne => b\nf =>"
+    expect(job_handler.get_job_sequence).to eq 'ad fcbe '
+  end
+  it 'should return a cb' do
+    job_handler.input = "a=>\nb=>c\nc=>\n"
+    expect(job_handler.get_job_sequence).to eq 'a cb '
+  end
+  it 'should raise the error if jobs has the loops on itself' do
+    job_handler.input = "a =>\nb => c\nc => f\nd => a\ne =>\nf => b\n"
+    expect(lambda { job_handler.get_job_sequence} ).to raise_error(RuntimeError)
+  end
+  
 end
