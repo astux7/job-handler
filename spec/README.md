@@ -9,7 +9,7 @@ Points for testing/Output:
 
 How to start:
 1. 7 different things to test for results
-2. OOP (Job, JobHandler)
+2. OOP (Job, JobSorter)
 3. Regex for input
-4. Tsort to use for multiple dependecies
+4. tSort to use for multiple dependencies
 

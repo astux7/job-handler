@@ -1,8 +1,4 @@
-class JobSorter
-
-  attr_accessor :input, :output, :job_container
-
-  JOB_UNIT_INPUT_TEMPLATE = /(^[a-z]{1}\s{1}?)(=>)(|(\s{1}?[a-z]{1}?))$/
+JOB_UNIT_INPUT_TEMPLATE = /(^[a-z]{1}\s{1}?)(=>)(|(\s{1}?[a-z]{1}?))$/
 
   def initialize(input = nil, output = "")
     @input = input
@@ -31,7 +27,3 @@ class JobSorter
   def parse_job_input(job)
     JOB_UNIT_INPUT_TEMPLATE.match(job)
   end
-
-
-
-end
