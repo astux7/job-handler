@@ -29,7 +29,6 @@ class JobHandler
 
   def sort_jobs
     result = Sorter.new(@job_container).tsort
-    #result.each{|job| puts job.inspect ; puts;}
     @output = result.map(&:name).join("")
   end
 
@@ -38,7 +37,6 @@ class JobHandler
       unit = parse_job_input(job)
       add_job_to_container(unit)
     end
-    @job_container.each {|j| puts j.inspect; puts}
   end
 
   def add_job_to_container(unit)
@@ -88,7 +86,5 @@ class JobHandler
   def parse_job_input(job)
     JOB_UNIT_INPUT_TEMPLATE.match(job)
   end
-
-
 
 end
