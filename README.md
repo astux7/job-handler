@@ -1,7 +1,8 @@
 Jobs handler: Asta Bevainyte 2014
 
-To run the program:
-``ruby runner.rb "the job sequence saparate with '|' but not new line"``
+To run the program:<br/>
+``ruby runner.rb "the job sequence saparate with '|' but not new line"``<br/>
+i.e. <br />``ruby runner.rb "a=>b|b=>c"``<br/>
 To run the test
 ``rspec``
 
