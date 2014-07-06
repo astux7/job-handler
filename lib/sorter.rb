@@ -14,6 +14,16 @@ class Sorter
     @sequence.each(&block)
   end
 
+  def tsort_each
+    each_strongly_connected_component {|component|
+      if component.size == 1
+        yield component.first
+      else
+        raise Cyclic.new("Circle in the job sequence: Topological sort failed")
+      end
+    }
+  end
+
   def tsort_each_child(job, &block)
     @sequence.select { |i| i.name == job.name }.first.has_dependency.each(&block)
   end

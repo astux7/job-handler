@@ -1,6 +1,7 @@
+require_relative 'program_error'
 require 'tsort'
-require 'sorter'
-require 'job'
+require_relative 'sorter'
+require_relative 'job'
 
 class JobHandler
 
