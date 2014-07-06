@@ -4,7 +4,7 @@ describe JobHandler do
 
   let(:job_handler) { JobHandler.new() }
 
-  it 'should init the JobHandler nil input and empty string for output' do
+  it 'should init the JobHandler input=nil and output=""' do
     expect(job_handler.input.nil?).to be_true
     expect(job_handler.output.empty?).to be_true
   end
@@ -28,22 +28,17 @@ describe JobHandler do
     expect(job_handler.get_job_sequence.empty?).to be_false
   end
 
-  it 'should raise the error if job depends on itself' do
-    job_handler.input = "a=>\nb=>\nc=>c"
-    expect(lambda { job_handler.get_job_sequence} ).to raise_error(StandardError)
-  end
-
   it 'should scale input to jobs' do
     job_handler.input = "a =>"
     expect(job_handler.get_job_sequence.empty?).to be_false
   end
 
-  it 'should return a for a given a => ' do
+  it 'should return "a" for a given a => ' do
     job_handler.input = "a =>"
     expect(job_handler.get_job_sequence).to eq ('a')
   end
 
-  it 'should return abc for a given structure' do
+  it 'should return "abc" for a given structure' do
     job_handler.input = "a=>\nb=>\nc=>\n"
     expect(job_handler.get_job_sequence).to eq 'abc'
   end
@@ -56,10 +51,8 @@ describe JobHandler do
     expect(result.find_index{|item| 'b'} < result.find_index{|item| 'e'})
   end
 
-  it 'should return a cb for a given structure' do
+  it 'should return "acb" for a given structure' do
     job_handler.input = "a=>\nb=>c\nc=>\n"
     expect(job_handler.get_job_sequence).to eq 'acb'
   end
-
-
 end

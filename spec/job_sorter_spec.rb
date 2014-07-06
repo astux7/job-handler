@@ -10,7 +10,7 @@ describe JobSorter do
     expect(sort.sequence.empty?).to be_true
   end
 
-  it 'should raise the error if jobs has the loops on itself' do
+  it 'should raise the error if jobs has the loop in sequence' do
     job_handler.input = "a =>\nb => c\nc => f\nd => a\ne =>\nf => b\n"
     job_handler.create_job_container
     expect { JobSorter.new(job_handler.job_container).tsort }.to raise_error("Circle in the job sequence: Topological sort failed")
