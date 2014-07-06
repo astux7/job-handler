@@ -65,5 +65,6 @@ How to start:
 1. 8 different things to test for results
 2. OOP (Job, JobHandler)
 3. Regex for input
-4. tSort to use for multiple dependencies
+4. before tSORT I tried to create my own sorting simple algorithm (https://github.com/astux7/job-handler/tree/old-otb) - most code parts came from there
+5. tSort to use for multiple dependencies
 
