@@ -61,9 +61,5 @@ describe JobHandler do
     expect(job_handler.get_job_sequence).to eq 'acb'
   end
 
-  it 'should raise the error if jobs has the loops on itself' do
-    job_handler.input = "a =>\nb => c\nc => f\nd => a\ne =>\nf => b\n"
-    expect(lambda { job_handler.get_job_sequence} ).to raise_error(StandardError)
-  end
 
 end
