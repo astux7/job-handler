@@ -8,12 +8,12 @@ class Job
   end
 
   def add_to_has_dependency(value)
-    raise(StandardError, "Object cannot belong to itself") if value == self
+    raise(StandardError, "Job cannot depend to itself") if value == self
     @has_dependency << value
   end
 
   def has_dependency
-    raise(StandardError, "Object cannot belong to itself") if @has_dependency.include?(self)
+    raise(StandardError, "Job cannot depend to itself") if @has_dependency.include?(self)
     @has_dependency
   end
 end
