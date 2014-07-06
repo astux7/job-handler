@@ -1,4 +1,5 @@
 require "tsort"
+#http://ruby-doc.org/stdlib-1.9.3/libdoc/tsort/rdoc/TSort.html
 
 class Sorter
   include TSort

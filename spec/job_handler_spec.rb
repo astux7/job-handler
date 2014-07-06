@@ -48,9 +48,12 @@ describe JobHandler do
     expect(job_handler.get_job_sequence).to eq 'abc'
   end
 
-  it 'should return ad fcbe for a given structure' do
-    job_handler.input = "a =>\nb => c\nc => f\nd => a\ne => b\nf =>\n"
-    expect(job_handler.get_job_sequence).to eq 'adfcbe '
+  it 'should return a before d  and f before c before b before e for a given structure' do
+    job_handler.input = "a =>\nb => c\nc => f\nd => a\ne => b\nf =>\n" 
+    result = job_handler.get_job_sequence.split("")
+    expect(result.find_index{|item| 'a'} < result.find_index{|item| 'd'})
+    expect(result.find_index{|item| 'f'} < result.find_index{|item| 'c'})
+    expect(result.find_index{|item| 'b'} < result.find_index{|item| 'e'})
   end
 
   it 'should return a cb for a given structure' do
