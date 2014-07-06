@@ -1,5 +1,5 @@
 require 'tsort'
-require_relative 'sorter'
+require_relative 'job_sorter'
 require_relative 'job'
 
 class JobHandler
@@ -37,7 +37,7 @@ class JobHandler
   private
 
     def sort_jobs
-      result = Sorter.new(@job_container).tsort
+      result = JobSorter.new(@job_container).tsort
       @output = result.map(&:name).join("")
     end
     
