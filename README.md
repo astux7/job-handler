@@ -1,5 +1,10 @@
 Jobs handler: Asta Bevainyte 2014
 
+To run the program:
+``ruby runner.rb "the job sequence saparate with '|' but not new line"``
+To run the test
+``rspec``
+
 Description:
 
 Start with a method that accepts a single string argument and returns a string (or a collection) which represents the ordered sequence of jobs (since each job is a single character).

@@ -75,7 +75,7 @@ class JobHandler
   #every job unit 'a=>b' separated with new line
   def check_job_sequence_input
     jobs = @input.delete(' ').split("\n")
-    raise "Unknown job squence" if jobs.any?{|job| correct_job_unit?(job) == false }
+    raise "Unknown job squence input" if jobs.any?{|job| correct_job_unit?(job) == false }
   end
 
   #the user input checker: a => , a=>n, a=> n, a => h..
